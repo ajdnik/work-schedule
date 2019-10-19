@@ -1,0 +1,17 @@
+module WorkSchedule
+Window 1.0 Window.qml
+Container 1.0 Container.qml
+TabContainer 1.0 TabContainer.qml
+Dialog 1.0 Dialog.qml
+Button 1.0 Button.qml
+IconButton 1.0 IconButton.qml
+NumericalUpDown 1.0 NumericalUpDown.qml
+Calendar 1.0 Calendar.qml
+CheckBox 1.0 CheckBox.qml
+ComboBox 1.0 ComboBox.qml
+Input 1.0 Input.qml
+Label 1.0 Label.qml
+TableColumn 1.0 TableColumn.qml
+TableView 1.0 TableView.qml
+Time 1.0 Time.qml
+BorderRectangle 1.0 BorderRectangle.qml

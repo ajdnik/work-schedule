@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>application.qml</file>
+        <file>lang/workschedule_sl.qm</file>
+        <file>Schedule.qml</file>
+        <file>Statistics.qml</file>
+        <file>ElektroCeljeLogotipGS.jpg</file>
+        <file>lang/workschedule_en.qm</file>
+    </qresource>
+</RCC>
