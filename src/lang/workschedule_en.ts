@@ -25,7 +25,7 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="58"/>
+        <location filename="../main.cpp" line="56"/>
         <source>Work schedule</source>
         <translation type="unfinished"></translation>
     </message>
@@ -111,7 +111,7 @@
     </message>
     <message>
         <location filename="../sys/holidaystore.cpp" line="126"/>
-        <location filename="../sys/worker.cpp" line="70"/>
+        <location filename="../sys/worker.cpp" line="110"/>
         <location filename="../sys/workerstore.cpp" line="97"/>
         <source>Index out of range.</source>
         <translation type="unfinished"></translation>
@@ -163,17 +163,28 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sys/schedulestore.cpp" line="685"/>
-        <location filename="../sys/schedulestore.cpp" line="698"/>
-        <location filename="../sys/schedulestore.cpp" line="739"/>
-        <location filename="../sys/schedulestore.cpp" line="752"/>
-        <location filename="../sys/schedulestore.cpp" line="780"/>
-        <location filename="../sys/schedulestore.cpp" line="790"/>
+        <location filename="../sys/schedulestore.cpp" line="276"/>
+        <location filename="../sys/schedulestore.cpp" line="287"/>
+        <source>Unexpected problem while changing workers. Try restarting the application.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sys/schedulestore.cpp" line="285"/>
+        <source>This worker can not be selected for this shift due to their constraints.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sys/schedulestore.cpp" line="711"/>
+        <location filename="../sys/schedulestore.cpp" line="724"/>
+        <location filename="../sys/schedulestore.cpp" line="765"/>
+        <location filename="../sys/schedulestore.cpp" line="778"/>
+        <location filename="../sys/schedulestore.cpp" line="806"/>
+        <location filename="../sys/schedulestore.cpp" line="816"/>
         <source>Schedule generation failed, constraints not satisfied. Try increasing max hours or adding more workers.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sys/worker.cpp" line="62"/>
+        <location filename="../sys/worker.cpp" line="102"/>
         <source>Event is invalid.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -375,42 +386,42 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sys/schedulestore.cpp" line="410"/>
+        <location filename="../sys/schedulestore.cpp" line="436"/>
         <source>Monday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sys/schedulestore.cpp" line="411"/>
+        <location filename="../sys/schedulestore.cpp" line="437"/>
         <source>Tuesday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sys/schedulestore.cpp" line="412"/>
+        <location filename="../sys/schedulestore.cpp" line="438"/>
         <source>Wednesday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sys/schedulestore.cpp" line="413"/>
+        <location filename="../sys/schedulestore.cpp" line="439"/>
         <source>Thursday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sys/schedulestore.cpp" line="414"/>
+        <location filename="../sys/schedulestore.cpp" line="440"/>
         <source>Friday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sys/schedulestore.cpp" line="415"/>
+        <location filename="../sys/schedulestore.cpp" line="441"/>
         <source>Saturday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sys/schedulestore.cpp" line="416"/>
+        <location filename="../sys/schedulestore.cpp" line="442"/>
         <source>Sunday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sys/schedulestore.cpp" line="512"/>
+        <location filename="../sys/schedulestore.cpp" line="538"/>
         <source>NOTES:</source>
         <translation type="unfinished"></translation>
     </message>

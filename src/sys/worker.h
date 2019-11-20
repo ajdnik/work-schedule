@@ -29,6 +29,7 @@ public:
     Error *removeEvent(int index);
     WorkerEvent *event(int index);
     bool canSelect(const QDateTime &start, const QDateTime &end) const;
+    bool canSelectForShift(const QDateTime &start, const QDateTime &end) const;
     int getLoad(int year);
     int getHours(int year);
     int getBonus(int year);

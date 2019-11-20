@@ -1090,14 +1090,14 @@ Window {
                     onClicked: {
                         if(changeWorker_select.currentIndex > -1) {
                             changeWorker.unfocus()
-                            schedules.changeWorker(scheduleTable.entryId, scheduleTable.workerNumber, changeWorker_select.currentId)
-                            //var error = events.insertEvent(addWorkerEvent_type.currentId, addWorkerEvent_startDate.getDate() + " 00:00:00", addWorkerEvent_endDate.getDate() + " 23:59:59")
-                            //if(error.isError()) {
-                            //    parent.info.show(error.error)
-                            //} else {
+                            var error = schedules.canChangeWorker(scheduleTable.entryId, changeWorker_select.currentId)
+                            if(error.isError()) {
+                                parent.info.show(error.error)
+                            } else {
+                                schedules.changeWorker(scheduleTable.entryId, scheduleTable.workerNumber, changeWorker_select.currentId)
                                 changeWorker.close()
                                 changeWorker.reset()
-                            //}
+                            }
                         } else {
                             parent.info.show(qsTr("You must select a worker."))
                         }

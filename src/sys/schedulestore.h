@@ -45,6 +45,7 @@ public:
     Q_INVOKABLE void setDate(int year, int month);
     Q_INVOKABLE QObject *generateSchedule(int year, int month, int maxHours);
     Q_INVOKABLE void changeWorker(int entryId, int workerNumber, int workerId);
+    Q_INVOKABLE QObject *canChangeWorker(int entryId, int workerId);
     Q_INVOKABLE bool canGenerateSchedule();
     Q_INVOKABLE void exportSchedule(const QString &filename);
     QString monthName() const;

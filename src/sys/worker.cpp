@@ -41,6 +41,46 @@ bool Worker::canSelect(const QDateTime &start, const QDateTime &end) const
     return this->bCanSelect;
 }
 
+bool Worker::canSelectForShift(const QDateTime &start, const QDateTime &end) const
+{
+    if(!this->bCanSelect)
+        return this->bCanSelect;
+    for(int i=0;i<this->aWorkerEvents.count();i++) {
+        if(this->aWorkerEvents[i].isInside(start, end)) {
+            return false;
+        }
+    }
+
+    QSqlQuery prevEntry = this->oDatabase->query();
+    prevEntry.prepare("select end from entries where (worker_id_1=:Id or worker_id_2=:Id) and end<=:Start order by end desc limit 1");
+    prevEntry.bindValue(":Id", this->id());
+    prevEntry.bindValue(":Start", start.toString("yyyy-MM-dd HH:mm:ss"));
+    prevEntry.exec();
+    if(prevEntry.next()) {
+        QDateTime endEntry = QDateTime::fromString(prevEntry.value(0).toString(), "yyyy-MM-dd HH:mm:ss");
+        int hoursDiff = 24;
+        if(endEntry.time().hour() <= 7)
+            hoursDiff = 48;
+        if(endEntry.secsTo(start) <= hoursDiff * 3600)
+            return false;
+    }
+
+    QSqlQuery nextEntry = this->oDatabase->query();
+    nextEntry.prepare("select start from entries where (worker_id_1=:Id or worker_id_2=:Id) and start>=:End order by start asc limit 1");
+    nextEntry.bindValue(":Id", this->id());
+    nextEntry.bindValue(":End", end.toString("yyyy-MM-dd HH:mm:ss"));
+    nextEntry.exec();
+    if(nextEntry.next()) {
+        QDateTime startEntry = QDateTime::fromString(nextEntry.value(0).toString(), "yyyy-MM-dd HH:mm:ss");
+        int hoursDiff = 24;
+        if(startEntry.time().hour() >= 22)
+            hoursDiff = 48;
+        if(end.secsTo(startEntry) <= hoursDiff * 3600)
+            return false;
+    }
+    return this->bCanSelect;
+}
+
 int Worker::id() const
 {
     return this->iId;

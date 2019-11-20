@@ -263,6 +263,32 @@ void ScheduleStore::updateCurrent()
     emit this->columnsChanged();
 }
 
+QObject *ScheduleStore::canChangeWorker(int entryId, int workerId)
+{
+    QList<Worker *> workers = this->oWorkers->getData();
+    Worker *worker = 0;
+    for(int i=0;i<workers.count();i++) {
+        Worker *current = workers[i];
+        if(current->id() == workerId)
+            worker = current;
+    }
+    if(worker == 0)
+        return this->setError(QObject::tr("Unexpected problem while changing workers. Try restarting the application."));
+    QSqlQuery query = this->oDatabase->query();
+    query.prepare("select start, end from entries where id=:Id");
+    query.bindValue(":Id", entryId);
+    query.exec();
+    if(query.next()) {
+        QDateTime start = QDateTime::fromString(query.value(0).toString(), "yyyy-MM-dd HH:mm:ss");
+        QDateTime end = QDateTime::fromString(query.value(1).toString(), "yyyy-MM-dd HH:mm:ss");
+        if(!worker->canSelectForShift(start, end))
+            return this->setError(QObject::tr("This worker can not be selected for this shift due to their constraints."));
+    } else {
+        return this->setError(QObject::tr("Unexpected problem while changing workers. Try restarting the application."));
+    }
+    return this->setNoError();
+}
+
 void ScheduleStore::changeWorker(int entryId, int workerNumber, int workerId)
 {
     int year = this->oDate.year();
@@ -899,7 +925,7 @@ Worker *ScheduleStore::getBestWorker(int load, int bonus, int hours, int maximum
     double minDist = 0.0;
     int minIdx = -1;
     for(int i=0;i<workers.count();i++) {
-        if(!workers[i]->canSelect(start, end)) continue;
+        if(!workers[i]->canSelectForShift(start, end)) continue;
         if(workers[i]->getLoad(year, month) + load + workers[i]->getHours(year, month) > maximumHours) continue;
         double devSumLoad = qPow(loadData[i] + loadNorm - loadAvg, 2);
         double devSumBonus = qPow(bonusData[i] + bonusNorm - bonusAvg, 2);
