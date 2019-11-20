@@ -31,5 +31,11 @@
 *.out
 *.app
 
+# Qt Creator
+*.pro.user
+build-*-Debug
+build-*-Release
+build-*-Profile
+
 # MacOS
 .DS_Store
