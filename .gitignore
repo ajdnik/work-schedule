@@ -36,6 +36,8 @@
 build-*-Debug
 build-*-Release
 build-*-Profile
+publish
+Output
 
 # MacOS
 .DS_Store
