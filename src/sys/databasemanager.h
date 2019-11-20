@@ -11,6 +11,7 @@ class DatabaseManager : public QObject
     Q_OBJECT
 private:
     QSqlDatabase oDatabase;
+    void checkAndMigrate();
 public:
     DatabaseManager(const QString &filename, QObject* parent = 0);
     QSqlQuery exec(const QString &query);
